@@ -1,13 +1,18 @@
 import React from 'react'
-import { fetchPhotos } from './api/mediaApi'
+import { fetchPhotos, fetchVideos } from './api/mediaApi'
+import SearchBar from './components/SearchBar'
+import Tabs from './components/Tabs'
+import ResultGrid from './components/ResultGrid'
 
 const App = () => {
 
 
   return (
-    <div className=''>
-      
-      <button onClick={()=>{fetchPhotos('cat')}}>Get Photos</button>
+    <div className='min-h-screen bg-gray-900 text-white'>
+
+      <SearchBar />
+      <Tabs />
+      <ResultGrid />
 
     </div>
   )
