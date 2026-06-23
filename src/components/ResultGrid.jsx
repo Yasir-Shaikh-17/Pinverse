@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchPhotos, fetchVideos } from "../api/mediaApi"
 import { setQuery, setErrors, setLoading, setResults, setActiveTabs, clearSearch } from "../redux/features/searchSlice"
 import { useEffect } from "react"
+import ResultCard from "./ResultCard"
 
 const ResultGrid = () => {
 
@@ -9,9 +10,10 @@ const ResultGrid = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        if (!query) return
 
-        try {
-            const getData = async () => {
+        const getData = async () => {
+            try {
                 dispatch(setLoading())
                 let data = []
                 if (activeTab == "photos") {
@@ -21,7 +23,8 @@ const ResultGrid = () => {
                         type: "photo",
                         title: item.alt_description,
                         thumbnail: item.urls.small,
-                        src: item.urls.full
+                        src: item.urls.full,
+                        url: item.links.html
                     }))
                 }
                 if (activeTab == "videos") {
@@ -31,25 +34,29 @@ const ResultGrid = () => {
                         type: "video",
                         title: item.user.name || "Video",
                         thumbnail: item.image,
-                        src: item.video_files[0].link
+                        src: item.video_files[0].link,
+                        url: item.url
                     }))
                 }
                 dispatch(setResults(data))
 
+            } catch (err) {
+                dispatch(setErrors(err.message))
             }
-        } catch (err) {
-            dispatch(setErrors(err))
         }
 
         getData()
 
     }, [query, activeTab])
 
+    if (error) return <h1>Error</h1>
+    if (loading) return <h1>Loading...</h1>
+
     return (
-        <div>
-
-
-
+        <div className="flex items-center justify-center gap-5 flex-wrap py-10">
+            {results.map((item, ind) => {
+                return <ResultCard key={ind} item={item}/>
+            })}
         </div>
     )
 }
