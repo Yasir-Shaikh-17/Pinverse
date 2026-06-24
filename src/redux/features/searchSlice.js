@@ -19,7 +19,7 @@ const searchSlice = createSlice({
         },
         setResults(state, action) {
             state.results = action.payload
-            state.loading = false
+            state.loading = true
         },
         setLoading(state, action) {
             state.loading = true

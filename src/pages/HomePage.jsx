@@ -5,7 +5,6 @@ import Tabs from '../components/Tabs'
 import ResultGrid from '../components/ResultGrid'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { ToastContainer, Zoom } from 'react-toastify'
 
 const HomePage = () => {
 
@@ -18,25 +17,7 @@ const HomePage = () => {
 
             <SearchBar />
 
-            {query != "" ? <div>
-                <Tabs />
-                <ResultGrid />
-            </div> : ""}
-
-
-            <ToastContainer
-                position="top-center"
-                autoClose={2000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick={false}
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-                transition={Zoom}
-            />
+            {query != "" ? <div className='h-[75vh] '> <Tabs /> <ResultGrid /> </div> : ""}
 
         </div>
     )

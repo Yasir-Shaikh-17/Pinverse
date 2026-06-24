@@ -3,6 +3,7 @@ import { fetchPhotos, fetchVideos } from "../api/mediaApi"
 import { setQuery, setErrors, setLoading, setResults, setActiveTabs, clearSearch } from "../redux/features/searchSlice"
 import { useEffect } from "react"
 import ResultCard from "./ResultCard"
+import SkeletonCard from "./SkeletonCard"
 
 const ResultGrid = () => {
 
@@ -49,11 +50,23 @@ const ResultGrid = () => {
 
     }, [query, activeTab])
 
+    const skeletonCardArray = Array.from({length: 20})
+
+
     if (error) return <h1>Error</h1>
-    if (loading) return <h1>Loading...</h1>
+
+    if (loading) return (
+
+        <div className="container flex items-center justify-center flex-wrap mx-5 gap-5 overflow-y-auto scrollbar-thin scrollbar-track-[#FF5C64] scrollbar-thumb-[#F6EEE3] h-[85%] my-2 py-5 bg-green-300">
+            {skeletonCardArray.map((_, ind)=>{
+                return <SkeletonCard />
+            })}
+        </div>
+
+    )
 
     return (
-        <div className="flex items-center justify-center gap-5 flex-wrap py-10">
+        <div className="flex items-center justify-center flex-wrap mx-5 gap-5 overflow-y-auto scrollbar-thin scrollbar-track-[#FF5C64] scrollbar-thumb-[#F6EEE3] h-[85%] my-2 py-5">
             {results.map((item, ind) => {
                 return <ResultCard key={ind} item={item}/>
             })}
