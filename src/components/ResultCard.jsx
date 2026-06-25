@@ -12,7 +12,7 @@ const ResultCard = ({ item }) => {
     }
 
     return (
-        <div className='h-80 w-[23%] shrink-0 relative rounded-lg shadow-lg'>
+        <div className='h-80 w-[23%] shrink-0 relative rounded-lg shadow-xl'>
 
             <a href={item.url} target='_blank'>
                 {item.type == "photo" ? <img className='w-full object-cover rounded-t h-[80%]' src={item.src} alt="" /> : ""}

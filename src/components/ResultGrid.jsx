@@ -19,12 +19,14 @@ const ResultGrid = () => {
                 let data = []
                 if (activeTab == "photos") {
                     let response = await fetchPhotos(query)
+                    console.log(response.results)
+
                     data = response.results.map((item) => ({
                         id: item.id,
                         type: "photo",
                         title: item.alt_description,
                         thumbnail: item.urls.small,
-                        src: item.urls.full,
+                        src: item.urls.small,
                         url: item.links.html
                     }))
                 }
@@ -50,15 +52,19 @@ const ResultGrid = () => {
 
     }, [query, activeTab])
 
-    const skeletonCardArray = Array.from({length: 20})
+    const skeletonCardArray = Array.from({ length: 20 })
 
 
-    if (error) return <h1>Error</h1>
+    if (error) return <><div className='h-[60vh] flex justify-center items-center flex-col'>
+        <img className='h-96 bg-green-400' src={noItemImage} alt="" />
+        <h1 className='text-8xl text-[#FF5C64] '>No items found</h1>
+    </div>
+    </>
 
     if (loading) return (
 
-        <div className="container flex items-center justify-center flex-wrap mx-5 gap-5 overflow-y-auto scrollbar-thin scrollbar-track-[#FF5C64] scrollbar-thumb-[#F6EEE3] h-[85%] my-2 py-5 bg-green-300">
-            {skeletonCardArray.map((_, ind)=>{
+        <div className="flex items-center justify-center flex-wrap mx-5 gap-5 overflow-y-auto scrollbar-thin scrollbar-track-gray-300 scrollbar-thumb-gray-400 h-[85%] my-2 py-5">
+            {skeletonCardArray.map((_, ind) => {
                 return <SkeletonCard />
             })}
         </div>
@@ -68,7 +74,7 @@ const ResultGrid = () => {
     return (
         <div className="flex items-center justify-center flex-wrap mx-5 gap-5 overflow-y-auto scrollbar-thin scrollbar-track-[#FF5C64] scrollbar-thumb-[#F6EEE3] h-[85%] my-2 py-5">
             {results.map((item, ind) => {
-                return <ResultCard key={ind} item={item}/>
+                return <ResultCard key={ind} item={item} />
             })}
         </div>
     )

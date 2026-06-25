@@ -8,10 +8,18 @@ const CollectionPage = () => {
   console.log(collection)
 
   return (
-    <div className='flex items-center justify-center gap-5 flex-wrap py-10'>
-      {collection.map((item, ind)=>{
-        return <CollectionCard key={ind} item={item} />
-      })}
+    <div className='h-[86vh]'>
+
+      <div className='h-[15%] bg-gray-300'>
+
+      </div>
+
+      <div className='h-[85%] flex justify-center gap-5 flex-wrap py-5 overflow-auto scrollbar-thin scrollbar-track-[#FF5C64] scrollbar-thumb-[#F6EEE3]'>
+        {collection.map((item, ind) => {
+          return <CollectionCard key={ind} item={item} />
+        })}
+      </div>
+
     </div>
   )
 }
