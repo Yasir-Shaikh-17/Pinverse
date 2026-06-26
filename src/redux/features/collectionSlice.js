@@ -18,7 +18,6 @@ const collectionSlice = createSlice({
             if (!alreadyExist) {
                 state.items.push(action.payload)
                 localStorage.setItem("collection", JSON.stringify(state.items))
-                console.log("Hello")
             }
         },
 
@@ -35,12 +34,12 @@ const collectionSlice = createSlice({
         },
 
         addToast: () => {
-            toast.success('Added to collection ✅', {
+            toast.success('Added to collection', {
                 position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
                 draggable: true,
                 progress: undefined,
                 theme: "dark",
@@ -49,14 +48,26 @@ const collectionSlice = createSlice({
         },
 
         removeToast: () => {
-            console.log("Remove toast trigger!!!")
-
-            toast.error('Removed from collection ❌', {
+            toast.error('Removed from collection', {
                 position: "top-center",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Zoom,
+            });
+        },
+
+        deleteCollectionToast: () => {
+            toast.error('Collection Deleted', {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: false,
                 draggable: true,
                 progress: undefined,
                 theme: "dark",
@@ -67,6 +78,6 @@ const collectionSlice = createSlice({
     }
 })
 
-export const { addCollection, removeCollection, clearCollection, addToast, removeToast } = collectionSlice.actions
+export const { addCollection, removeCollection, clearCollection, addToast, removeToast, deleteCollectionToast } = collectionSlice.actions
 
 export default collectionSlice.reducer;

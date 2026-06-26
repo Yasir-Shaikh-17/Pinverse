@@ -18,14 +18,14 @@ const HomePage = () => {
 
             <SearchBar />
 
-            {query != "" ? <div className='h-[75vh] '> <Tabs /> <ResultGrid /> </div> :
+            {query != "" ? <div className='h-[75svh] '> <Tabs /> <ResultGrid /> </div> :
 
-                <div className='h-[75vh] flex justify-center items-center flex-col gap-5'>
-                    <div className='flex items-center gap-5'>
-                        <img className='h-40' src={logo} alt="" />
-                        <h1 className='text-9xl font-bold text-[#FF5C64] uppercase'>Pinverse</h1>
+                <div className='h-[75svh] flex justify-center items-center flex-col gap-2 sm:gap-5'>
+                    <div className='flex flex-col sm:flex-row items-center gap-2 sm:gap-5'>
+                        <img className='h-32 lg:h-40' src={logo} alt="" />
+                        <h1 className='text-5xl sm:text-7xl lg:text-9xl font-bold text-[#FF5C64] uppercase'>Pinverse</h1>
                     </div>
-                    <h2 className='text-[#FF5C64] text-5xl font-bold uppercase'>Your Universe of Images & Videos</h2>
+                    <h2 className='text-[#FF5C64] sm:text-3xl lg:text-5xl font-bold uppercase'>Your Universe of Images & Videos</h2>
                 </div>
 
             }

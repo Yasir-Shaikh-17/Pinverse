@@ -31,6 +31,7 @@ const searchSlice = createSlice({
         },
         clearSearch(state) {
             state.results = []
+            localStorage.removeItem("collection")
         },
         clearHome (state) {
             state.query = "";

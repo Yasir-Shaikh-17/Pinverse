@@ -3,7 +3,7 @@ import image from "../assets/svgs/image.svg"
 
 const SkeletonCard = () => {
     return (
-        <div className='h-80 w-[23%] shrink-0 relative rounded-lg shadow-xl'>
+        <div className='h-80 w-72 shrink-0 rounded-lg shadow-xl'>
 
             <div className='h-[80%] bg-gray-400 rounded-t flex justify-center items-center'>
                 <img className='h-20 animate-pulse' src={image} alt="" />
