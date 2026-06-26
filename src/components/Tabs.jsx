@@ -15,7 +15,7 @@ const Tabs = () => {
     return (
         <div className='flex justify-between items-center h-[15%] px-5'>
 
-            <div>
+            <div className='w-full'>
                 <h2 className='text-[#FF5C64] text-2xl sm:text-3xl font-bold uppercase truncate w-48'>{query}</h2>
             </div>
 
