@@ -88,8 +88,8 @@ const ResultGrid = () => {
                 <div className="flex items-center justify-center mx-5 gap-5 h-full mt-2">
 
                     <div className='flex justify-center items-center flex-col gap-2 sm:gap-5'>
-                        <img className='h-48 sm:h-72' src={noItemImage} alt="" />
-                        <h1 className='text-4xl md:text-5xl lg:text-8xl text-[#FF5C64] font-bold uppercase text-center'>No items found</h1>
+                        <img className='h-48 sm:h-60' src={noItemImage} alt="" />
+                        <h1 className='text-4xl md:text-5xl lg:text-6xl text-[#FF5C64] font-bold uppercase text-center'>No items found</h1>
                     </div>
 
                 </div>
